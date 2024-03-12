@@ -115,14 +115,14 @@ int main() {
 	}
 
 	/*GAME BEGINS*/
-	if (willPlay == true) {
+	while (willPlay == true) {
 		int size = playerChoice + 2; 
 
 		newBoard = initializeBoard(size); 
 
 		printBoard(newBoard, size); 
 
-		//repeats until their is a winner of a tie
+		//repeats until their is a winner of a tie.
 		while ((checkWin(newBoard,size,player1Name,player2Name) == false) && (checkTie(newBoard) == false)) { 
 			cout << player1Name << "(SS), choose a cell: ";
 			cin >> player1Cell;
@@ -156,12 +156,43 @@ int main() {
 			printBoard(newBoard, size);
 			
 		}
+
+		//displays menu again to give player choice to start over.
+		cout << endl; 
+		displayMenu();
+		cin >> playerChoice;
+		cout << endl;
+
+		switch (playerChoice) {
+		case 1:
+			willPlay = true;
+			break;
+		case 2:
+			willPlay = true;
+			break;
+		case 3:
+			willPlay = true;
+			break;
+		case 4:
+			willPlay = true;
+			break;
+		case 5:
+			willPlay = true;
+			break;
+		case 6:
+			willPlay = true;
+			break;
+		case 7:
+			willPlay = true;
+			break;
+		default:
+			willPlay = false;
+			break;
+		}
 	}
 
 	/*GAME ENDS*/
-	else {
-		printGoodbyeMessage();
-	}
+	printGoodbyeMessage();
 
 	return 0;
 }
@@ -179,6 +210,7 @@ void displayMenu() {
 }
 
 void printBoard(const string& board, const int size) {
+	cout << "Current Board:" << endl;
 	int ct = 0;
 	for (int i = 0;i < board.length();i += 2) {
 		cout << board[i] << board[i + 1] << " ";
